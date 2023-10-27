@@ -6,6 +6,12 @@ import './App.css';
 import Test1 from './Test1';
 import Test2 from './Test2';
 
+import ReactGA from "react-ga4";
+
+ReactGA.initialize("G-Y5132BYCPS");
+ReactGA.send("pageview");
+
+
 function App() {
   return (
       <Router>
