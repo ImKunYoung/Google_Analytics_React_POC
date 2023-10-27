@@ -1,12 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // Routes 추가
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
 import Test1 from './Test1';
 import Test2 from './Test2';
 
+function usePageTracking() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.gtag('event', 'page_view', { page_path: location.pathname });
+  }, [location]);
+}
+
 function App() {
+  usePageTracking();
+
   return (
       <Router>
         <div className="App">
@@ -35,7 +45,6 @@ function App() {
             </nav>
           </header>
 
-          {/* <Routes>로 변경 */}
           <Routes>
             <Route path="/test1" element={<Test1 />} />
             <Route path="/test2" element={<Test2 />} />
