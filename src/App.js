@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'; // Routes 추가
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
@@ -9,8 +9,7 @@ import Test2 from './Test2';
 import ReactGA from "react-ga4";
 
 ReactGA.initialize("G-Y5132BYCPS");
-ReactGA.send("pageview");
-
+ReactGA.send({ hitType: "pageview", page: window.location.pathname });
 
 function App() {
   return (
@@ -18,9 +17,7 @@ function App() {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Google_Analytics_React_POC
-            </p>
+            <p>Google_Analytics_React_POC</p>
             <a
                 className="App-link"
                 href="https://reactjs.org"
@@ -41,7 +38,6 @@ function App() {
             </nav>
           </header>
 
-          {/* <Routes>로 변경 */}
           <Routes>
             <Route path="/test1" element={<Test1 />} />
             <Route path="/test2" element={<Test2 />} />
